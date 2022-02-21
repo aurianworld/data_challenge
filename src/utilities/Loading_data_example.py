@@ -7,16 +7,16 @@ import cv2
 # Loading data tables from H5py files
 #######################################################################
 
-h5f = h5py.File('data_train_images.h5','r')
-train_images = h5f['data_train_images'][:]
+h5f = h5py.File('dataset/data_train_images.h5','r')
+train_images = h5f['dataset/data_train_images'][:]
 h5f.close()
 
-h5f = h5py.File('data_train_landmarks.h5','r')
-train_landmarks = h5f['data_train_landmarks'][:]
+h5f = h5py.File('dataset/data_train_landmarks.h5','r')
+train_landmarks = h5f['dataset/data_train_landmarks'][:]
 h5f.close()
 
-h5f = h5py.File('data_train_labels.h5','r')
-train_labels = h5f['data_train_labels'][:]
+h5f = h5py.File('dataset/data_train_labels.h5','r')
+train_labels = h5f['dataset/data_train_labels'][:]
 h5f.close()
 
 #######################################################################
