@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 #ignore the dataset folder
-.dataset
+.dataset/
