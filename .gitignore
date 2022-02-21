@@ -130,3 +130,6 @@ dmypy.json
 
 #ignore the dataset files
 *.h5
+
+#ignore pdf files
+*.pdf
