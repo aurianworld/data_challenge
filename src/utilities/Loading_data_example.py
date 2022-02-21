@@ -7,15 +7,15 @@ import cv2
 # Loading data tables from H5py files
 #######################################################################
 
-h5f = h5py.File('data_train_images.h5','r')
+h5f = h5py.File('.\dataset\data_train_images.h5','r')
 train_images = h5f['data_train_images'][:]
 h5f.close()
 
-h5f = h5py.File('data_train_landmarks.h5','r')
+h5f = h5py.File('.\dataset\data_train_landmarks.h5','r')
 train_landmarks = h5f['data_train_landmarks'][:]
 h5f.close()
 
-h5f = h5py.File('data_train_labels.h5','r')
+h5f = h5py.File('.\dataset\data_train_labels.h5','r')
 train_labels = h5f['data_train_labels'][:]
 h5f.close()
 
@@ -40,7 +40,7 @@ print(train_labels.shape)
 #######################################################################
 
 sequence = 127
-frame = 7
+frame = 0
 
 img = train_images[sequence,frame]
 landmarks = train_landmarks[sequence,frame]
