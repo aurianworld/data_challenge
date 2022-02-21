@@ -128,5 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#ignore the dataset folder
-dataset/
+#ignore the dataset files
+*.h5
