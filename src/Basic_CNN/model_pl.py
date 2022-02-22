@@ -5,6 +5,8 @@ import torchmetrics
 
 from pytorch_lightning.loggers import TensorBoardLogger
 
+from Basic_CNN import SimpleCNN
+
 class image_classifier(pl.LightningModule):
   def __init__(self, train_set, val_set, batch_size = 8, lr = 1e-3):
 
