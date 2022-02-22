@@ -133,3 +133,6 @@ dmypy.json
 
 #ignore pdf files
 *.pdf
+
+#ignore csv files
+*.csv
