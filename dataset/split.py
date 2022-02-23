@@ -26,6 +26,11 @@ def main(filename, ratio, data_augmentation=False):
     landmarks = h5f['data_train_landmarks'][:]
     h5f.close()
 
+    h5f = h5py.File('./dataset/data_test_landmarks.h5', 'r')
+    landmarks_check = h5f['data_test_landmarks'][:]
+    h5f.close()
+    labels_check = np.zeros_like(landmarks_check)
+
     lmk_train, lmk_test, labels_train, labels_test = train_test_split(
         landmarks, labels, test_size=0.20, random_state=42)
 
@@ -57,9 +62,14 @@ def main(filename, ratio, data_augmentation=False):
 
     train_path = "dataset/" + filename + "_train.pickle"
     test_path = "dataset/" + filename + "_test.pickle"
+    check_path = "dataset/" + filename + "_check.pickle"
 
-    write(train_path, X_train, y_train)
-    write(test_path, X_test, y_test)
+    # write(train_path, X_train, y_train)
+    # write(test_path, X_test, y_test)
+    write(check_path, landmarks_check, labels_check)
+
+    print(landmarks_check.shape)
+    print(labels_check.shape)
 
 
 if __name__ == '__main__':
