@@ -7,6 +7,8 @@ import pickle
 def write(path, landmarks, labels):
     data = {"landmarks": landmarks, "labels": labels}
 
+    print(data["landmarks"].shape)
+    print(data["labels"].shape)
     with open(path, "wb") as file_out:
         pickle.dump(data, file_out)
 
