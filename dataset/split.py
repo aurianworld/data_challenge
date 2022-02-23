@@ -2,6 +2,7 @@ from data_augmentation import DataAugmentation
 from sklearn.model_selection import train_test_split
 import h5py
 import pickle
+import numpy as np
 
 
 def write(path, landmarks, labels):
@@ -34,9 +35,13 @@ def main(filename, ratio, data_augmentation=False):
     if data_augmentation:
         d = DataAugmentation(lmk_train, labels_train)
         lmk_train, labels_train = d.augmentation(flip=True,
-                                                 noise_levels=[2, 3, 4],
+                                                 noise_levels=[1, 2, 3, 4, 5],
                                                  rotation=[
                                                      -2,
+                                                     -1,
+                                                     1,
+                                                     10,
+                                                     -10,
                                                      2,
                                                      5,
                                                      -5,
@@ -44,11 +49,17 @@ def main(filename, ratio, data_augmentation=False):
     print("Train size (after data augmentation): ", len(lmk_train))
     print("Export data:")
 
+    idx = np.random.permutation(len(lmk_train))
+    X_train, y_train = lmk_train[idx], labels_train[idx]
+
+    idx = np.random.permutation(len(lmk_test))
+    X_test, y_test = lmk_test[idx], labels_test[idx]
+
     train_path = "dataset/" + filename + "_train.pickle"
     test_path = "dataset/" + filename + "_test.pickle"
 
-    write(train_path, lmk_train, labels_train)
-    write(test_path, lmk_test, labels_test)
+    write(train_path, X_train, y_train)
+    write(test_path, X_test, y_test)
 
 
 if __name__ == '__main__':
