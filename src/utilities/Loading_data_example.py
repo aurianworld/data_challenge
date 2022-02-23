@@ -40,7 +40,7 @@ print(train_labels.shape)
 #######################################################################
 
 sequence = 127
-frame = 7
+frame = 0
 
 img = train_images[sequence, frame]
 landmarks = train_landmarks[sequence, frame]
