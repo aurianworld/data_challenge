@@ -31,8 +31,9 @@ def main(filename, ratio, data_augmentation=False):
     h5f.close()
     labels_check = np.zeros_like(landmarks_check)
 
+    # shuffle = False since we want unseen faces in the test set
     lmk_train, lmk_test, labels_train, labels_test = train_test_split(
-        landmarks, labels, test_size=0.20, random_state=42)
+        landmarks, labels, test_size=0.15, shuffle=False)
 
     print("Train size (before data augmentation): ", len(lmk_train))
     print("Test size: ", len(lmk_test))
@@ -64,8 +65,8 @@ def main(filename, ratio, data_augmentation=False):
     test_path = "dataset/" + filename + "_test.pickle"
     check_path = "dataset/" + filename + "_check.pickle"
 
-    # write(train_path, X_train, y_train)
-    # write(test_path, X_test, y_test)
+    write(train_path, X_train, y_train)
+    write(test_path, X_test, y_test)
     write(check_path, landmarks_check, labels_check)
 
     print(landmarks_check.shape)
